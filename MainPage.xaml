@@ -8,7 +8,68 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="Layout" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <StackPanel x:Name="TitlePanel"
+                    Grid.Row="0"
+                    Margin="12,17,0,28">
+            
+            <TextBlock Text="Syca Tracker"
+                       Style="{StaticResource HeaderTextBlockStyle}"
+                       Margin="12,0">
+                
+            </TextBlock>
+            
+        </StackPanel>
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="12,0,12,0">
+                <!--TextBlock Text="Esta app nos ayudará a tracker info. " />
+                <TextBlock  Name="Position" Text="No position"/>
+                <Button x:Name="ButtonNotification" Content="ClickMe" Click="Button_Click"/-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Bind the list box to the observable collection. -->
+            <ListBox x:Name="toDoItemsListBox" ItemsSource="{Binding GeoPoints}" 
+                     Grid.Row="0" Margin="12, 0, 12, 0" Width="440">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Stretch" Width="440">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Text="{Binding Latitude}"
+                                FontSize="{StaticResource TextStyleSmallFontSize}"
+                                Grid.Column="1"
+                                VerticalAlignment="Center"/>
+                            <TextBlock
+                                Text="{Binding Longitude}"
+                                FontSize="{StaticResource TextStyleSmallFontSize}"
+                                Grid.Column="1"
+                                VerticalAlignment="Center"/>
+                            <TextBlock
+                                Text="{Binding EventDateTime}"
+                                FontSize="{StaticResource TextStyleSmallFontSize}"
+                                Grid.Column="1"
+                                VerticalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+        </Grid>
+        
+        
     </Grid>
 </Page>
